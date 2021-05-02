@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="NewWriters"
         android:textColor="@color/black"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="20dp"
         android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,9 +52,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="13dp"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:text="Use your Credentials to sign in"/>
         <TextView
             android:id="@+id/forgotPass"
@@ -73,6 +73,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/lg_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Email"
@@ -84,14 +85,17 @@
                 android:layout_height="1dp"
                 android:background="@color/gray"/>
             <EditText
+                android:id="@+id/lg_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:inputType="textPassword"
                 android:paddingLeft="10dp"
                 android:background="@null"
                 android:hint="Password"
                 android:layout_weight="1"/>
         </LinearLayout>
         <CheckBox
+            android:id="@+id/lg_showPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Show Password"
@@ -99,6 +103,7 @@
             android:layout_marginTop="15dp"
             android:checked="false"/>
         <Button
+            android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign-In"
@@ -141,6 +146,7 @@
                 android:layout_height="1dp"/>
         </LinearLayout>
         <Button
+            android:id="@+id/lg_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -148,6 +154,40 @@
             android:textSize="17dp"
             android:background="@drawable/cornerborder"
             android:text="Create new NewWriters account"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/lime"
+                android:text="condition of use Cookies Notice"
+            />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/lime"
+                android:text="Privacy Notice Interest-Based Ads Notice"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/lime"
+                android:text="Help"
+                android:gravity="center"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
