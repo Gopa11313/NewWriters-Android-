@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         Sologan.startAnimation(fadein)
         Handler(Looper.getMainLooper()).postDelayed({
     startActivity()
-        },2500)
+        },2000)
 
     }
     fun startActivity(){
