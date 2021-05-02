@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -13,12 +14,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.newwriters.ui.adapter.IntroSliderAdapter
 import com.example.newwriters.ui.home.HomeActivity
 import com.example.newwriters.ui.model.IntroSlide
-import com.google.android.material.button.MaterialButton
 
 class SliderActivity : AppCompatActivity() {
     private lateinit var introSliderViewPager: ViewPager2
     private lateinit var indicatorContainer: LinearLayout
-    private lateinit var buttonNext: MaterialButton
+    private lateinit var buttonNext: Button
     private lateinit var textSkipIntro: TextView
     private val introSliderAdapter = IntroSliderAdapter(
         listOf(
@@ -28,7 +28,7 @@ class SliderActivity : AppCompatActivity() {
 
             IntroSlide("Restaurant Management System",
                 "Restaurant Management System",
-                R.drawable.book2)
+                R.drawable.booksa)
         )
     )
     override fun onCreate(savedInstanceState: Bundle?) {
