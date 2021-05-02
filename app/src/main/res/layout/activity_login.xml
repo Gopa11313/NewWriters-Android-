@@ -6,10 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAllCaps="false"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".UI.Login.LoginActivity">
     <TextView
         android:id="@+id/textView"
@@ -17,7 +19,6 @@
         android:layout_height="wrap_content"
         android:text="NewWriters"
         android:textColor="@color/black"
-        android:layout_marginTop="20dp"
         android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +48,7 @@
             android:text="Sign-in"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="30dp"
+            android:textSize="20dp"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -132,7 +133,7 @@
                 android:layout_height="1dp"/>
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:gravity="center"
@@ -190,5 +191,5 @@
             android:text=""/>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 </ScrollView>
