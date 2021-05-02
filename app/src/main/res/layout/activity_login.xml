@@ -22,7 +22,7 @@
     <FrameLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
-
+            android:background="@drawable/customborder"
             android:orientation="vertical">
 
             <EditText
@@ -70,7 +70,7 @@
                 android:layout_weight="1"/>
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:background="@color/gray"/>
             <EditText
                 android:layout_width="match_parent"
