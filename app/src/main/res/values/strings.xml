@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NewWriters</string>
+    <string name="Terms">By signing in, you agree to the <font color='#008000'>NewWriters store terms and condition</font>.</string>
 </resources>
