@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:screenOrientation="portrait"
     tools:context=".UI.Login.LoginActivity">
 
 
@@ -43,8 +42,15 @@
             android:text="Sign-in"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="18dp"
+            android:textSize="30dp"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:text="Use your Credentials to sign in"/>
         <TextView
             android:id="@+id/forgotPass"
             android:layout_width="wrap_content"
@@ -65,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Email"
-                android:padding="5dp"
+                android:paddingLeft="10dp"
                 android:background="@null"
                 android:layout_weight="1"/>
             <FrameLayout
@@ -75,10 +81,26 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:padding="5dp"
+                android:paddingLeft="10dp"
                 android:background="@null"
                 android:hint="Password"
                 android:layout_weight="1"/>
         </LinearLayout>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Password"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            android:checked="false"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign-In"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:background="@color/purple_700"
+            android:layout_marginTop="25dp"
+            />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
