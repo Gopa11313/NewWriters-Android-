@@ -8,7 +8,7 @@ import android.os.Looper
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TextView
-import com.example.newwriters.UI.Login.LoginActivity
+import com.example.newwriters.ui.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var Sologan:TextView

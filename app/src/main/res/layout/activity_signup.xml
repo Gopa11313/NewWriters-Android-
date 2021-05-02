@@ -11,7 +11,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".UI.Signup.SignupActivity">
+    tools:context=".ui.signup.SignupActivity">
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

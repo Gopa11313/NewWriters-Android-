@@ -1,4 +1,4 @@
-package com.example.newwriters.UI.Signup
+package com.example.newwriters.ui.signup
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import com.example.newwriters.R
-import com.example.newwriters.UI.Login.LoginActivity
+import com.example.newwriters.ui.login.LoginActivity
 
 class SignupActivity : AppCompatActivity() {
     private lateinit var sg_name:EditText
