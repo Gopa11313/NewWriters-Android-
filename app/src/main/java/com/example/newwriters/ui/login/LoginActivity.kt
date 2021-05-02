@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.newwriters.R
+import com.example.newwriters.SliderActivity
 import com.example.newwriters.databinding.ActivityLoginBinding
 import com.example.newwriters.ui.signup.SignupActivity
 class LoginActivity : AppCompatActivity() {
@@ -31,6 +32,9 @@ class LoginActivity : AppCompatActivity() {
         binding.loginViewModel=loginViewModel
         lg_signup.setOnClickListener(){
             startActivity(Intent(this,SignupActivity::class.java))
+        }
+        login.setOnClickListener(){
+            startActivity(Intent(this,SliderActivity::class.java))
         }
     }
 }
