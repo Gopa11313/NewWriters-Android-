@@ -15,7 +15,7 @@
         android:id="@+id/navigation_bookmark"
         android:name="com.example.newwriters.ui.home.ui.bookmark.BookmarkFragment"
         android:label="@string/title_bookmark"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/bookmark_fragment" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
