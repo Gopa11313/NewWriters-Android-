@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">NewWriters</string>
     <string name="Terms">By signing in, you agree to the <font color='#008000'>NewWriters store terms and condition</font>.</string>
+    <string name="read">first <font color='#ff4f00'>reads</font></string>
     <string name="title_activity_home">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_bookmark">Bookmark</string>
