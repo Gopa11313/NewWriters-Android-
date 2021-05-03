@@ -1,15 +1,18 @@
 package com.example.newwriters.ui.home.ui.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.newwriters.R
 import com.example.newwriters.ui.adapter.dashboradIteamAdapter
 import com.example.newwriters.ui.model.DashBoradIteam
+import com.example.newwriters.ui.upload_books.UploadBookActivity
 
 
 class DashboardFragment : Fragment() {
@@ -41,8 +44,8 @@ class DashboardFragment : Fragment() {
         DashBoradIteamAdpater.add(DashBoradIteam("Profile",
             R.drawable.ic_baseline_person_outline_24))
 
-        DashBoradIteamAdpater.add(DashBoradIteam("Upload Books",
-            R.drawable.ic_baseline_person_outline_24))
+//        DashBoradIteamAdpater.add(DashBoradIteam("Upload Books",
+//            R.drawable.ic_baseline_person_outline_24))
 
         DashBoradIteamAdpater.add(DashBoradIteam("Info",
             R.drawable.ic_baseline_info_24))
@@ -55,5 +58,13 @@ class DashboardFragment : Fragment() {
 
         adapter = context?.let { dashboradIteamAdapter(it, DashBoradIteamAdpater) }
         listView.adapter = adapter
+
+//        listView.onItemClickListener =
+//            AdapterView.OnItemClickListener { parent, view, position, id ->
+//                val selectedItemText = parent.getItemAtPosition(position)
+//                if(selectedItemText==1){
+//                    startActivity(Intent(context  ,UploadBookActivity::class.java))
+//                }
+//            }
     }
 }
