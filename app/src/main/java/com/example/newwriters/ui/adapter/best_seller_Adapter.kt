@@ -10,7 +10,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newwriters.R
-import com.example.newwriters.databinding.ActivityLoginBinding.inflate
 import com.example.newwriters.ui.model.Best_Seller
 
 class best_seller_Adapter(
