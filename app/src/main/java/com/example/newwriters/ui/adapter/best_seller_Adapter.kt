@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newwriters.R
 import com.example.newwriters.ui.model.Best_Seller
+import com.example.newwriters.ui.particular_book.ParticularBookActivity
 
 class best_seller_Adapter(
         val list_Of_BEstSelller:ArrayList<Best_Seller>,
@@ -34,9 +35,9 @@ class best_seller_Adapter(
                 .load(bestseller.image)
                 .into(holder.best_seller_book)
         holder.best_seller_book.setOnClickListener(){
-//            val intent= Intent(context,DetailActivity::class.java)
-//            intent.putExtra("story",story)
-//            context.startActivity(intent);
+            val intent= Intent(context,ParticularBookActivity::class.java)
+            intent.putExtra("book",bestseller)
+            context.startActivity(intent);
         }
     }
 
