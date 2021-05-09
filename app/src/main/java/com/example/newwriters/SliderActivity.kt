@@ -22,12 +22,12 @@ class SliderActivity : AppCompatActivity() {
     private lateinit var textSkipIntro: TextView
     private val introSliderAdapter = IntroSliderAdapter(
         listOf(
-            IntroSlide("Restaurant Management System",
-                "Restaurant Management System",
+            IntroSlide("New Writer",
+                "Browse and read books and enhance you knowledge.",
                 R.drawable.book),
 
-            IntroSlide("Restaurant Management System",
-                "Restaurant Management System",
+            IntroSlide("New Writer",
+                "Enjoy Our Books",
                 R.drawable.booksa)
         )
     )

@@ -26,7 +26,7 @@ class ParticularBookActivity : AppCompatActivity() {
     private fun value(){
         lst_of_review.add(Review(name = "Gopal Thapa",ratting = 5F,date = "2020/07/01",review = "This is a good book i highly recommend this book for the fantasy loving guys."))
         lst_of_review.add(Review(name = "Raju vaii",ratting = 5F,date = "2020/07/01",review = "This is a good book i highly recommend this book for the fantasy loving guys."))
-        lst_of_review.add(Review(name = "Chiya  posal",ratting = 5F,date = "2020/07/01",review = "This is a good book i highly recommend this book for the fantasy loving guys."))
+        lst_of_review.add(Review(name = "Chiya  pasal",ratting = 5F,date = "2020/07/01",review = "This is a good book i highly recommend this book for the fantasy loving guys."))
         lst_of_review.add(Review(name = "saeli ko vatti",ratting = 5F,date = "2020/07/01",review = "This is a good book i highly recommend this book for the fantasy loving guys."))
     }
 }
