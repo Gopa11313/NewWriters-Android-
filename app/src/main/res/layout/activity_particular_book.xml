@@ -53,12 +53,62 @@
                     android:text="(2332)"
                     />
             </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_bookmark_24"
+                android:layout_marginTop="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to Bookmark"
+                android:layout_gravity="center"
+                />
         </LinearLayout>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Description"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="This is a book about a women who can fly above the sky and can
+bring moon peace. "
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/something_about_book"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BUY NOW"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@color/orange"
+        android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="WRITE A REVIEW"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/user_review"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
