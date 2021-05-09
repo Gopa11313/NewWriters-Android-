@@ -21,10 +21,10 @@ class UploadBookFragment : Fragment() {
         uploadBookViewModel =
             ViewModelProvider(this).get(UploadBookViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_upload_book, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        uploadBookViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+//        val textView: TextView = root.findViewById(R.id.text_gallery)
+//        uploadBookViewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
         return root
     }
 }

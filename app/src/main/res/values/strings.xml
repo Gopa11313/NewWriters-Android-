@@ -20,4 +20,6 @@
     <string name="menu_upload_books">Upload Book</string>
     <string name="menu_user">Users</string>
     <string name="menu_request">Request</string>
+    <string name="author_name">Author Name</string>
+    <string name="book_name">Book Name</string>
 </resources>
