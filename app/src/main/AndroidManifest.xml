@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewWriters">
-        <activity android:name=".ui.particular_book.ParticularBookActivity"></activity>
+        <activity
+            android:name=".ui.admin.home.AdminPanelActivity"
+            android:label="@string/title_activity_admin__panel_"
+            android:theme="@style/Theme.NewWriters.NoActionBar"></activity>
+        <activity android:name=".ui.admin.home.AdminHomeActivity"></activity>
+        <activity android:name=".ui.particular_book.ParticularBookActivity" />
         <activity android:name=".ui.upload_books.UploadBookActivity" />
         <activity
             android:name=".ui.home.HomeActivity"

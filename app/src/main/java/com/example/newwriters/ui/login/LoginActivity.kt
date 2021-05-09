@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.newwriters.R
 import com.example.newwriters.SliderActivity
 import com.example.newwriters.databinding.ActivityLoginBinding
+import com.example.newwriters.ui.admin.home.AdminPanelActivity
 import com.example.newwriters.ui.signup.SignupActivity
 class LoginActivity : AppCompatActivity() {
     private lateinit var lg_email:EditText
@@ -31,10 +32,16 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel= ViewModelProvider(this).get(LoginViewModel::class.java)
         binding.loginViewModel=loginViewModel
         lg_signup.setOnClickListener(){
+
             startActivity(Intent(this,SignupActivity::class.java))
         }
         login.setOnClickListener(){
-            startActivity(Intent(this,SliderActivity::class.java))
+            if(lg_email.text.toString()=="admin" || lg_password.text.toString()=="admin"){
+                startActivity(Intent(this,AdminPanelActivity::class.java))
+            }
+            else {
+                startActivity(Intent(this, SliderActivity::class.java))
+            }
         }
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_navigation"
+    app:startDestination="@+id/nav_book">
+    <fragment
+        android:id="@+id/nav_book"
+        android:name="com.example.newwriters.ui.admin.home.ui.book.BookFragment"
+        android:label="@string/menu_book"
+        tools:layout="@layout/fragment_drawer_home" />
+
+    <fragment
+        android:id="@+id/nav_upload_book"
+        android:name="com.example.newwriters.ui.admin.home.ui.uploadbooks.UploadBookFragment"
+        android:label="@string/menu_upload_books"
+        tools:layout="@layout/fragment_upload_book" />
+
+    <fragment
+        android:id="@+id/nav_user_show"
+        android:name="com.example.newwriters.ui.admin.home.ui.user.UsershowFragment"
+        android:label="@string/menu_user"
+        tools:layout="@layout/fragment_user_show" />
+
+    <fragment
+        android:id="@+id/nav_request"
+        android:name="com.example.newwriters.ui.admin.home.ui.request.RequestFragment"
+        android:label="@string/menu_request"
+        tools:layout="@layout/request_fragment" />
+</navigation>
