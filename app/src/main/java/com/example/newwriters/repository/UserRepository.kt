@@ -14,4 +14,9 @@ class UserRepository:MyApiRequest() {
             myapi.userSignup(user)
         }
     }
+    suspend fun LoginUSer(user:User):UserResponse{
+        return apiRequest {
+            myapi.userLogin(user)
+        }
+    }
 }
