@@ -18,6 +18,7 @@
     android:layout_height="match_parent"
     android:textAllCaps="false"
     android:gravity="center"
+    android:id="@+id/login_layout"
     android:orientation="vertical"
     tools:context=".ui.login.LoginActivity">
     <TextView
