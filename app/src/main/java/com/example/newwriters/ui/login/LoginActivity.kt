@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.newwriters.R
 import com.example.newwriters.SliderActivity
+import com.example.newwriters.api.ServiceBuilder
 import com.example.newwriters.databinding.ActivityLoginBinding
 import com.example.newwriters.repository.UserRepository
 import com.example.newwriters.ui.admin.home.AdminPanelActivity
@@ -66,6 +67,8 @@ class LoginActivity : AppCompatActivity() {
                 val response=repository.LoginUSer(user)
                 if(response.success==true){
                     if(response.role=="Admin"){
+                        ServiceBuilder.token="Bearer ${response.token}"
+                        ServiceBuilder.id=response._id
                         withContext(Main) {
                             startActivity(Intent(this@LoginActivity, AdminPanelActivity::class.java))
                             finish()
