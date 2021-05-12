@@ -25,4 +25,9 @@ class BookRepository:MyApiRequest() {
             myapi.uploadBookFile(ServiceBuilder.token!!,id,book)
         }
     }
+    suspend fun getAllBook():BookResponse{
+        return apiRequest {
+            myapi.getAllBook(ServiceBuilder.token!!)
+        }
+    }
 }

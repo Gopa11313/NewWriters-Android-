@@ -25,4 +25,7 @@ interface BookApi {
         @Path("id") id:String,
         @Part book: MultipartBody.Part
     ):Response<BookResponse>
+
+    @GET("get/all/book")
+    suspend fun getAllBook(@Header("Authorization") token:String):Response<BookResponse>
 }
