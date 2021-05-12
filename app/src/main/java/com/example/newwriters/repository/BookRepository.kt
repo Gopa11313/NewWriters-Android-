@@ -20,4 +20,9 @@ class BookRepository:MyApiRequest() {
             myapi.uploadCoverPage(ServiceBuilder.token!!,id,cover_page)
         }
     }
+    suspend fun UploadBookFile(id:String,book: MultipartBody.Part):BookResponse{
+        return apiRequest {
+            myapi.uploadBookFile(ServiceBuilder.token!!,id,book)
+        }
+    }
 }

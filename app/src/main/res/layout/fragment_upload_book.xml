@@ -69,7 +69,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"/>
         <Button
-            android:id="@+id/Book"
+            android:id="@+id/up_Book"
             android:layout_width="0dp"
             android:layout_weight="5"
             android:textAllCaps="false"
@@ -138,6 +138,7 @@
            android:orientation="horizontal"
            >
            <EditText
+               android:id="@+id/offer"
                android:layout_width="0dp"
                android:layout_weight="1"
                android:hint="Offer"
@@ -147,6 +148,7 @@
                android:background="@drawable/cornerborder"
                android:layout_height="40dp"/>
            <EditText
+               android:id="@+id/price"
                android:layout_width="0dp"
                android:textSize="15dp"
                android:layout_weight="1"

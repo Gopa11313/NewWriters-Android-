@@ -17,4 +17,12 @@ interface BookApi {
         @Path("id") id:String,
         @Part cover_page: MultipartBody.Part
     ):Response<BookResponse>
+
+    @Multipart
+    @PUT("upload/book/{id}")
+    suspend fun uploadBookFile(
+        @Header("Authorization") token:String,
+        @Path("id") id:String,
+        @Part book: MultipartBody.Part
+    ):Response<BookResponse>
 }
