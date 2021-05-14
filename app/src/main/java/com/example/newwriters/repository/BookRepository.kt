@@ -40,4 +40,9 @@ class BookRepository:MyApiRequest() {
             myapi.getAllSoldBook(ServiceBuilder.token!!)
         }
     }
+    suspend fun getBookID(id:String):BookResponse{
+        return apiRequest {
+            myapi.getBookId(ServiceBuilder.token!!,id)
+        }
+    }
 }

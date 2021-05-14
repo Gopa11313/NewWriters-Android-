@@ -40,5 +40,11 @@ interface BookApi {
         @Header("Authorization") token:String
     ):Response<BookResponse>
 
+    @GET("get/book/by/{id}")
+    suspend fun getBookId(
+        @Header("Authorization") token:String,
+        @Path ("id") id:String
+    ):Response<BookResponse>
+
 
 }
