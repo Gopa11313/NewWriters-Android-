@@ -11,4 +11,5 @@
     <color name="colorPrimary">#0099ff</color>
     <color name="lime">#008000</color>
     <color name="orange">#ff4f00</color>
+    <color name="myPrimaryColor">#008000</color>
 </resources>

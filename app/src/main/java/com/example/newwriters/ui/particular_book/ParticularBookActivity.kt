@@ -15,6 +15,7 @@ import com.example.newwriters.repository.BookRepository
 import com.example.newwriters.ui.adapter.review_adapter
 import com.example.newwriters.ui.model.Best_Seller
 import com.example.newwriters.ui.model.Review
+import com.example.newwriters.ui.utils.CustomDialog
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Main
 
@@ -24,6 +25,7 @@ class ParticularBookActivity : AppCompatActivity() {
     private lateinit var bkNm:TextView
     private lateinit var athName:TextView
     private lateinit var numberOfPeople:TextView
+    private lateinit var writeReview:TextView
     private lateinit var description:TextView
     private lateinit var BookRatting:RatingBar
     private var Id:String?=null
@@ -38,6 +40,7 @@ class ParticularBookActivity : AppCompatActivity() {
         numberOfPeople=findViewById(R.id.numberOfPeople)
         description=findViewById(R.id.description)
         BookRatting=findViewById(R.id.BookRatting)
+        writeReview=findViewById(R.id.writeReview)
 
         val adapter=review_adapter(lst_of_review,this)
         val mlayout=LinearLayoutManager(this)
@@ -47,6 +50,9 @@ class ParticularBookActivity : AppCompatActivity() {
         Id = intent.getStringExtra("_id")
         if (intent != null) {
             getBook()
+        }
+        writeReview.setOnClickListener (){
+            CustomDialog().show(supportFragmentManager, "MyCustomFragment")
         }
     }
 
