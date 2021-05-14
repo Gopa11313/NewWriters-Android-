@@ -12,7 +12,7 @@ object ServiceBuilder:MyApiRequest() {
 //   private const val BASE_URL="http://localhost:90/"
     var token:String?=null
     var id:String?=null
-    var book_id:String?=null
+    var BookID:String?=null
     private val okhttp= OkHttpClient.Builder()
     var gson: Gson = GsonBuilder()
         .setLenient()

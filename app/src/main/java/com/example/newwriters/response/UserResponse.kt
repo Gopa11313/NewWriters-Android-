@@ -7,7 +7,7 @@ data class UserResponse(
     val token:String?=null,
     val msg:String?=null,
     val data:List<User>?=null,
-    val _id:String?=null,
+    val id:String?=null,
     val role:String?=null,
 
 ) {

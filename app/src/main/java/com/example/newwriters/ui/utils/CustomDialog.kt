@@ -22,8 +22,8 @@ class CustomDialog:DialogFragment() {
     private lateinit var tv_review:TextView
     private lateinit var cancel_review:Button
     private lateinit var submit_review:Button
-    var ratingFromBar:Int?=null
-
+    var ratingFromBar:Float?=null
+    var bookid:String?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         getDialog()!!.getWindow()?.setBackgroundDrawableResource(R.drawable.cornerborder);
         return inflater.inflate(R.layout.review, container, false)
@@ -38,7 +38,8 @@ class CustomDialog:DialogFragment() {
         tv_review = view.findViewById(R.id.tv_review)
         rate_book.onRatingBarChangeListener =
             RatingBar.OnRatingBarChangeListener { p0, p1, p2 ->
-                ratingFromBar = p1.toInt()
+                ratingFromBar = p1
+                Toast.makeText(requireContext(), "$p1", Toast.LENGTH_SHORT).show()
                 tv_review.setText(ratingFromBar.toString())
             }
         submit_review.setOnClickListener(){
@@ -55,7 +56,7 @@ class CustomDialog:DialogFragment() {
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
     private fun review(){
-        val review=Review(userId = ServiceBuilder.id,bookId = ServiceBuilder.book_id,ratting = ratingFromBar,review = review_writing.text.toString())
+        val review=Review(userId = ServiceBuilder.id!!,bookId = ServiceBuilder.BookID!!,ratting = ratingFromBar?.toFloat().toString(),review = review_writing.text.toString())
         try {
             CoroutineScope(Dispatchers.IO).launch {
                 val repository=ReviewRepository()
@@ -67,9 +68,15 @@ class CustomDialog:DialogFragment() {
                         dismiss()
                     }
                 }
+                else{
+                    withContext(Main){
+                        Toast.makeText(requireContext(), "${response.msg}", Toast.LENGTH_SHORT).show()
+                        dismiss()
+                    }
+                }
             }
         }catch (e:Exception){
-
+            Toast.makeText(requireContext(), "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
         }
     }
 }

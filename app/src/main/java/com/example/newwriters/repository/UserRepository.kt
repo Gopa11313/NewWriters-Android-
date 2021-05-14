@@ -19,4 +19,9 @@ class UserRepository:MyApiRequest() {
             myapi.userLogin(user)
         }
     }
+    suspend fun userByid(id:String):UserResponse{
+        return apiRequest {
+            myapi.UserbyId(id,ServiceBuilder.token!!)
+        }
+    }
 }

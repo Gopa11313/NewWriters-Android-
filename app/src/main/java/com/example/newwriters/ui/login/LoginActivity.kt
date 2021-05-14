@@ -67,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
                 val response=repository.LoginUSer(user)
                 if(response.success==true){
                     ServiceBuilder.token="Bearer ${response.token}"
-                    ServiceBuilder.id=response._id
+                    ServiceBuilder.id=response.id
                     if(response.role=="Admin"){
                         withContext(Main) {
                             startActivity(Intent(this@LoginActivity, AdminPanelActivity::class.java))

@@ -12,7 +12,13 @@ class ReviewRepository:MyApiRequest() {
 
     suspend fun addReiew(review:Review):ReviewResponse{
         return apiRequest{
-            myapi.addReview(review)
+            myapi.addReview(ServiceBuilder.token!!,review)
+        }
+    }
+
+    suspend fun getallReview():ReviewResponse{
+        return apiRequest {
+            myapi.GetAllReview(ServiceBuilder.token!!)
         }
     }
 }

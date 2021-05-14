@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.newwriters.R
 import com.example.newwriters.api.ServiceBuilder
 import com.example.newwriters.repository.BookRepository
+import com.example.newwriters.repository.ReviewRepository
 import com.example.newwriters.ui.adapter.review_adapter
 import com.example.newwriters.ui.model.Best_Seller
 import com.example.newwriters.ui.model.Review
@@ -47,13 +48,13 @@ class ParticularBookActivity : AppCompatActivity() {
         val mlayout=LinearLayoutManager(this)
         user_review.layoutManager= LinearLayoutManager(this)
         user_review.adapter=adapter
-
+        getallReview()
         Id = intent.getStringExtra("_id")
         if (intent != null) {
             getBook()
         }
         writeReview.setOnClickListener (){
-            ServiceBuilder.book_id=Id
+            ServiceBuilder.BookID=Id
             CustomDialog().show(supportFragmentManager, "MyCustomFragment")
         }
     }
@@ -83,6 +84,22 @@ class ParticularBookActivity : AppCompatActivity() {
 
         }catch (e:Exception){
             Toast.makeText(this, "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun getallReview(){
+        try {
+            CoroutineScope(Dispatchers.IO).launch{
+                val repository=ReviewRepository()
+                val response=repository.getallReview()
+                if(response.success==true){
+                    val data=response.data
+                    val adapter=review_adapter(data as ArrayList<Review>,this@ParticularBookActivity)
+                    user_review.layoutManager= LinearLayoutManager(this@ParticularBookActivity)
+                    user_review.adapter=adapter
+                }
+            }
+        }catch (e:Exception){
+
         }
     }
 }

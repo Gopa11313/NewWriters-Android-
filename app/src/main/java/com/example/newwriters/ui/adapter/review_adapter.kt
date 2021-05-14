@@ -8,11 +8,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newwriters.R
+import com.example.newwriters.api.ServiceBuilder
+import com.example.newwriters.repository.UserRepository
 import com.example.newwriters.ui.model.Review
 import com.example.newwriters.ui.particular_book.ParticularBookActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class review_adapter(
         val list_Of_Review:ArrayList<Review>,
@@ -40,6 +49,26 @@ class review_adapter(
         val review = list_Of_Review[position]
         holder.date.text=review.date
         holder.review.text=review.review
+        val userid=review.userId
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                val repository=UserRepository()
+                val response=repository.userByid(userid!!)
+                if(response.success==true){
+                    withContext(Main){
+                        holder.user_name.setText(response.data?.get(0)?.name)
+                    }
+                }
+            else{
+                withContext(Main){
+                    Toast.makeText(context, "${response.msg}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+    catch (e:Exception){
+        Toast.makeText(context, "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+    }
         }
 
     override fun getItemCount(): Int {
