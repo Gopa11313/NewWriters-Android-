@@ -27,5 +27,18 @@ interface BookApi {
     ):Response<BookResponse>
 
     @GET("get/all/book")
-    suspend fun getAllBook(@Header("Authorization") token:String):Response<BookResponse>
+    suspend fun getAllBook(
+        @Header("Authorization") token:String
+    ):Response<BookResponse>
+
+    @GET("get/top/ratted/book")
+    suspend fun getAllTopRatedBook(
+        @Header("Authorization") token:String
+    ):Response<BookResponse>
+    @GET("get/top/sold/book")
+    suspend fun getAllSoldBook(
+        @Header("Authorization") token:String
+    ):Response<BookResponse>
+
+
 }

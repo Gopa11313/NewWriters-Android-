@@ -10,11 +10,13 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newwriters.R
+import com.example.newwriters.api.ServiceBuilder
 import com.example.newwriters.ui.model.Best_Seller
+import com.example.newwriters.ui.model.Book
 import com.example.newwriters.ui.particular_book.ParticularBookActivity
 
 class best_seller_Adapter(
-        val list_Of_BEstSelller:ArrayList<Best_Seller>,
+        val list_Of_BEstSelller:ArrayList<Book>,
         val context: Context): RecyclerView.Adapter<best_seller_Adapter.BestSellerViewholder>() {
     class BestSellerViewholder(view: View) : RecyclerView.ViewHolder(view) {
         val best_seller_book: ImageView
@@ -31,12 +33,16 @@ class best_seller_Adapter(
 
     override fun onBindViewHolder(holder: BestSellerViewholder, position: Int) {
         val bestseller=list_Of_BEstSelller[position]
-        Glide.with(context)
-                .load(bestseller.image)
+        val img=bestseller.cover_page!!
+        val imagePath = ServiceBuilder.loadImagePath() +img
+        if (!img.equals("noimg")) {
+            Glide.with(context)
+                .load(imagePath)
                 .into(holder.best_seller_book)
+        }
         holder.best_seller_book.setOnClickListener(){
             val intent= Intent(context,ParticularBookActivity::class.java)
-            intent.putExtra("book",bestseller)
+            intent.putExtra("_id",bestseller._id)
             context.startActivity(intent);
         }
     }

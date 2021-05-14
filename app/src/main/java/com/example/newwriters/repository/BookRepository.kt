@@ -30,4 +30,14 @@ class BookRepository:MyApiRequest() {
             myapi.getAllBook(ServiceBuilder.token!!)
         }
     }
+    suspend fun AllTopRatedBook():BookResponse{
+        return apiRequest {
+            myapi.getAllTopRatedBook(ServiceBuilder.token!!)
+        }
+    }
+    suspend fun topSoldBook():BookResponse{
+        return apiRequest {
+            myapi.getAllSoldBook(ServiceBuilder.token!!)
+        }
+    }
 }

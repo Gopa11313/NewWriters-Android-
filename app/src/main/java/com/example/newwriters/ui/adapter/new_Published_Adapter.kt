@@ -8,12 +8,12 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newwriters.R
-import com.example.newwriters.ui.model.New_Published
-import com.example.newwriters.ui.model.Top_rated
+import com.example.newwriters.api.ServiceBuilder
+import com.example.newwriters.ui.model.Book
 
 class new_Published_Adapter(
-    val list_Of_NewPublished:ArrayList<New_Published>,
-val context: Context): RecyclerView.Adapter<new_Published_Adapter.NEwPublished_AdapterViewholder>() {
+    val list_Of_NewPublished:ArrayList<Book>,
+    val context: Context): RecyclerView.Adapter<new_Published_Adapter.NEwPublished_AdapterViewholder>() {
     class NEwPublished_AdapterViewholder(view: View) : RecyclerView.ViewHolder(view) {
         val new_published_book: ImageView
         init {
@@ -29,9 +29,13 @@ val context: Context): RecyclerView.Adapter<new_Published_Adapter.NEwPublished_A
 
     override fun onBindViewHolder(holder:NEwPublished_AdapterViewholder, position: Int) {
         val bestseller=list_Of_NewPublished[position]
-        Glide.with(context)
-            .load(bestseller.image)
-            .into(holder.new_published_book)
+        val img=bestseller.cover_page!!
+        val imagePath = ServiceBuilder.loadImagePath() +img
+        if (!img.equals("noimg")) {
+            Glide.with(context)
+                .load(imagePath)
+                .into(holder.new_published_book)
+        }
         holder.new_published_book.setOnClickListener(){
 //            val intent= Intent(context,DetailActivity::class.java)
 //            intent.putExtra("story",story)

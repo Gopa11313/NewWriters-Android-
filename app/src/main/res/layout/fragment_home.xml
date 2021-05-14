@@ -89,7 +89,7 @@
             android:background="@color/gray"
             />
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcy_bst_seller"
+            android:id="@+id/bst_seller_rcy"
             android:scrollbars="horizontal"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
@@ -152,7 +152,7 @@
             android:background="@color/gray"
             />
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcy_top_rated"
+            android:id="@+id/top_rated_rcy"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -212,7 +212,7 @@
             android:background="@color/gray"
             />
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcy_new_publised"
+            android:id="@+id/new_publised_rcy"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

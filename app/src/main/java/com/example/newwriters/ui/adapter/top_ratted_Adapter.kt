@@ -8,10 +8,11 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newwriters.R
-import com.example.newwriters.ui.model.Top_rated
+import com.example.newwriters.api.ServiceBuilder
+import com.example.newwriters.ui.model.Book
 
 class top_ratted_Adapter (
-    val list_Of_topRated:ArrayList<Top_rated>,
+    val list_Of_topRated:ArrayList<Book>,
         val context: Context): RecyclerView.Adapter<top_ratted_Adapter.TopRattedViewholder>() {
     class TopRattedViewholder(view: View) : RecyclerView.ViewHolder(view) {
         val top_rated_book: ImageView
@@ -27,10 +28,14 @@ class top_ratted_Adapter (
     }
 
     override fun onBindViewHolder(holder:TopRattedViewholder, position: Int) {
-        val bestseller=list_Of_topRated[position]
-        Glide.with(context)
-            .load(bestseller.image)
-            .into(holder.top_rated_book)
+        val top_ratted=list_Of_topRated[position]
+        val img=top_ratted.cover_page!!
+        val imagePath = ServiceBuilder.loadImagePath() +img
+        if (!img.equals("noimg")) {
+            Glide.with(context)
+                .load(imagePath)
+                .into(holder.top_rated_book)
+        }
         holder.top_rated_book.setOnClickListener(){
 //            val intent= Intent(context,DetailActivity::class.java)
 //            intent.putExtra("story",story)
