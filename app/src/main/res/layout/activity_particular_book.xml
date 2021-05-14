@@ -92,8 +92,6 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:textColor="@color/black"
-        android:text="This is a book about a women who can fly above the sky and can
-bring moon peace. "
         />
     <TextView
         android:layout_marginTop="10dp"
@@ -111,6 +109,7 @@ bring moon peace. "
         android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
         />
     <Button
+        android:id="@+id/writeReview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
