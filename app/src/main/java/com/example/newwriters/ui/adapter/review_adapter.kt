@@ -38,9 +38,7 @@ class review_adapter(
 
     override fun onBindViewHolder(holder: review_adapterViewholder, position: Int) {
         val review = list_Of_Review[position]
-        holder.user_name.text=review.name
         holder.date.text=review.date
-        holder.review_ratting.rating= review.ratting!!
         holder.review.text=review.review
         }
 

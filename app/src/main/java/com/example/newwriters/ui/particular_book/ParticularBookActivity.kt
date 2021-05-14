@@ -29,6 +29,7 @@ class ParticularBookActivity : AppCompatActivity() {
     private lateinit var description:TextView
     private lateinit var BookRatting:RatingBar
     private var Id:String?=null
+//    private var book_Id:String?=null
     private val lst_of_review=ArrayList<Review>();
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +53,7 @@ class ParticularBookActivity : AppCompatActivity() {
             getBook()
         }
         writeReview.setOnClickListener (){
+            ServiceBuilder.book_id=Id
             CustomDialog().show(supportFragmentManager, "MyCustomFragment")
         }
     }
