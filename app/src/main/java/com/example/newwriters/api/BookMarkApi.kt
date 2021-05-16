@@ -5,11 +5,15 @@ import com.example.newwriters.response.ReviewResponse
 import com.example.newwriters.ui.model.Bookmark
 import com.example.newwriters.ui.model.Review
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface BookMarkApi {
     @POST("bookmark/book")
     suspend fun BookmarkBook(@Header("Authorization") token:String, @Body bookmark: Bookmark): Response<BookmarkResponse>
+
+    @GET("get/all/bookmark/boook/{userid}")
+    suspend fun getBookamrkedBook(
+        @Header("Authorization") token:String,
+        @Path("userid") userid:String
+    ):Response<BookmarkResponse>
 }

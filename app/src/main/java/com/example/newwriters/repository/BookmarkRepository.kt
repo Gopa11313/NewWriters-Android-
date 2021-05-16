@@ -15,4 +15,9 @@ class BookmarkRepository:MyApiRequest() {
             myapi.BookmarkBook(ServiceBuilder.token!!,bookmark)
         }
     }
+    suspend fun getAllBookamarkedBook(userId:String):BookmarkResponse{
+        return apiRequest {
+            myapi.getBookamrkedBook(ServiceBuilder.token!!,userId)
+        }
+    }
 }
