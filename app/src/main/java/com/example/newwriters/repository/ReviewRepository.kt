@@ -16,9 +16,9 @@ class ReviewRepository:MyApiRequest() {
         }
     }
 
-    suspend fun getallReview():ReviewResponse{
+    suspend fun getallReview(bookid:String):ReviewResponse{
         return apiRequest {
-            myapi.GetAllReview(ServiceBuilder.token!!)
+            myapi.GetAllReview(ServiceBuilder.token!!,bookid)
         }
     }
 }

@@ -37,12 +37,12 @@ class bookmark_Adapter(
 
     override fun onBindViewHolder(holder: bookmark_AdapteViewholder, position: Int) {
         val review = list_Of_BookMarked_Book[position]
-        holder.Author_name.text=review.author_name
-        holder.book_name.text=review.book_name
-        holder.ratting.rating= review.ratting!!
-        Glide.with(context)
-                .load(review.cover_page)
-                .into(holder.cover_page)
+//        holder.Author_name.text=review.author_name
+//        holder.book_name.text=review.book_name
+//        holder.ratting.rating= review.ratting!!
+//        Glide.with(context)
+//                .load(review.cover_page)
+//                .into(holder.cover_page)
     }
 
     override fun getItemCount(): Int {
