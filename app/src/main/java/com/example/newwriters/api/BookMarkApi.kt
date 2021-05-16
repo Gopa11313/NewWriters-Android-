@@ -16,4 +16,10 @@ interface BookMarkApi {
         @Header("Authorization") token:String,
         @Path("userid") userid:String
     ):Response<BookmarkResponse>
+
+    @DELETE("delete/bookmark/book/{id}")
+    suspend fun deleteBookmarkedBook(
+        @Header("Authorization") token:String,
+        @Path("id") id:String
+    ):Response<BookmarkResponse>
 }

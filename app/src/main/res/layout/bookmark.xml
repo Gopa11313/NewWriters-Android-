@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/bookmarkSingleBook"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +15,7 @@
             android:id="@+id/cover_page"
             android:src="@drawable/ic_baseline_person_outline_24"
             android:layout_width="130dp"
-            android:layout_height="173dp"/>
+            android:layout_height="163dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,6 +62,7 @@
                     />
         </LinearLayout>
             <ImageView
+                android:id="@+id/deleteBookmarked"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"

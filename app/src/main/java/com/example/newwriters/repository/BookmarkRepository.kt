@@ -20,4 +20,10 @@ class BookmarkRepository:MyApiRequest() {
             myapi.getBookamrkedBook(ServiceBuilder.token!!,userId)
         }
     }
+
+    suspend fun DeleteBookmarkedBook(id:String):BookmarkResponse{
+        return apiRequest {
+            myapi.deleteBookmarkedBook(ServiceBuilder.token!!,id)
+        }
+    }
 }
