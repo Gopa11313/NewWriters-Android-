@@ -15,6 +15,7 @@ import com.example.newwriters.repository.BookmarkRepository
 import com.example.newwriters.repository.ReviewRepository
 import com.example.newwriters.ui.adapter.review_adapter
 import com.example.newwriters.ui.model.Best_Seller
+import com.example.newwriters.ui.model.Book
 import com.example.newwriters.ui.model.Bookmark
 import com.example.newwriters.ui.model.Review
 import com.example.newwriters.ui.utils.CustomDialog
@@ -160,4 +161,5 @@ class ParticularBookActivity : AppCompatActivity() {
         }
         builder.show()
     }
+
 }

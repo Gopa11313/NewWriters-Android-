@@ -13,6 +13,7 @@ import com.example.newwriters.R
 import com.example.newwriters.ui.adapter.dashboradIteamAdapter
 import com.example.newwriters.ui.model.DashBoradIteam
 import com.example.newwriters.ui.upload_books.UploadBookActivity
+import com.example.newwriters.ui.user_profile.UserProfileActivity
 
 
 class DashboardFragment : Fragment() {
@@ -59,12 +60,12 @@ class DashboardFragment : Fragment() {
         adapter = context?.let { dashboradIteamAdapter(it, DashBoradIteamAdpater) }
         listView.adapter = adapter
 
-//        listView.onItemClickListener =
-//            AdapterView.OnItemClickListener { parent, view, position, id ->
-//                val selectedItemText = parent.getItemAtPosition(position)
-//                if(selectedItemText==1){
-//                    startActivity(Intent(context  ,UploadBookActivity::class.java))
-//                }
-//            }
+        listView.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                val selectedItemText = parent.getItemAtPosition(position)
+                if(selectedItemText==0){
+                    startActivity(Intent(context  ,UserProfileActivity::class.java))
+                }
+            }
     }
 }

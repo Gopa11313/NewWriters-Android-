@@ -8,7 +8,9 @@ import android.widget.*
 import androidx.fragment.app.DialogFragment
 import com.example.newwriters.R
 import com.example.newwriters.api.ServiceBuilder
+import com.example.newwriters.repository.BookRepository
 import com.example.newwriters.repository.ReviewRepository
+import com.example.newwriters.ui.model.Book
 import com.example.newwriters.ui.model.Review
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -44,6 +46,7 @@ class CustomDialog:DialogFragment() {
             }
         submit_review.setOnClickListener(){
             review()
+//            rateBooks()
         }
         cancel_review.setOnClickListener(){
             dismiss()
@@ -72,6 +75,41 @@ class CustomDialog:DialogFragment() {
                     withContext(Main){
                         Toast.makeText(requireContext(), "${response.msg}", Toast.LENGTH_SHORT).show()
                         dismiss()
+                    }
+                }
+            }
+        }catch (e:Exception){
+            Toast.makeText(requireContext(), "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun rateBooks(){
+
+        try{
+            CoroutineScope(Dispatchers.IO).launch {
+                val repository= BookRepository()
+                val response=repository.getBookID(ServiceBuilder.BookID!!)
+                if(response.success==true) {
+                    val noofratting = response.data?.get(0)?.noofRating?.plus(1)
+                    val book = Book(
+                        _id = ServiceBuilder.BookID!!,
+                        ratting = ratingFromBar,
+                        noofRating = noofratting
+                    )
+                    val another_respo = repository.RateBook(book)
+                    if (another_respo.success==true){
+                        withContext(Main){
+                            Toast.makeText(requireContext(), "${another_respo.msg}", Toast.LENGTH_SHORT).show()
+                        }
+                }
+                    else{
+                        withContext(Main){
+                            Toast.makeText(requireContext(), "${another_respo.msg}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                else{
+                    withContext(Main){
+                        Toast.makeText(requireContext(), "${response.msg}", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

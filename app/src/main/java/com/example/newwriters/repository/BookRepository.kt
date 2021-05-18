@@ -45,4 +45,9 @@ class BookRepository:MyApiRequest() {
             myapi.getBookId(ServiceBuilder.token!!,id)
         }
     }
+    suspend fun RateBook(book:Book):BookResponse{
+        return apiRequest {
+            myapi.RateBook(ServiceBuilder.token!!,book)
+        }
+    }
 }

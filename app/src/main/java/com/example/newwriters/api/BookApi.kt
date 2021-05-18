@@ -46,5 +46,11 @@ interface BookApi {
         @Path ("id") id:String
     ):Response<BookResponse>
 
+@POST("rate/the/note")
+    suspend fun RateBook(
+        @Header("Authorization") token:String,
+        @Body book: Book
+    ):Response<BookResponse>
+
 
 }
