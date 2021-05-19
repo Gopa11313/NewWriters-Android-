@@ -1,5 +1,6 @@
 package com.example.newwriters.ui.user_profile
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.newwriters.R
 import com.example.newwriters.api.ServiceBuilder
 import com.example.newwriters.repository.UserRepository
+import com.example.newwriters.ui.uploadUserImage.UploadImageActivity
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +30,9 @@ class UserProfileActivity : AppCompatActivity() {
         user_name=findViewById(R.id.user_name)
         getuser()
 
+        user_image.setOnClickListener(){
+            startActivity(Intent(this,UploadImageActivity::class.java))
+        }
 
 
 

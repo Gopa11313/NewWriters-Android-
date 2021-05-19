@@ -2,6 +2,7 @@ package com.example.newwriters.api
 
 import com.example.newwriters.response.UserResponse
 import com.example.newwriters.ui.model.User
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -16,5 +17,13 @@ interface UserApi {
     suspend fun UserbyId(
         @Path ("id") id:String,
         @Header("Authorization") token:String
+    ):Response<UserResponse>
+
+    @Multipart
+    @PUT("upload/user/image/{id}")
+    suspend fun uploadUserImage(
+        @Path ("id") id:String,
+        @Header("Authorization") token:String,
+        @Part cover_page: MultipartBody.Part
     ):Response<UserResponse>
 }

@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewWriters"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.user_profile.UserProfileActivity"></activity>
+        <activity android:name=".ui.uploadUserImage.UploadImageActivity"></activity>
+        <activity android:name=".ui.user_profile.UserProfileActivity" />
         <activity
             android:name=".ui.admin.home.AdminPanelActivity"
             android:label="@string/title_activity_admin__panel_"
