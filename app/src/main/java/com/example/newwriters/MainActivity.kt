@@ -25,14 +25,13 @@ class MainActivity : AppCompatActivity() {
         Sologan = findViewById(R.id.Sologan)
         fadein = AnimationUtils.loadAnimation(this, R.anim.fadein)
         Sologan.startAnimation(fadein)
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
-            finish()
-        }, 2000)
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+//            finish()
+//        }, 2000)
         val sharedPref = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
         val emailPref = sharedPref.getString("email", null)
         val passwordPref = sharedPref.getString("password", "")
-
         CoroutineScope(Dispatchers.IO).launch {
             delay(1000)
             if (emailPref != null) {
@@ -49,6 +48,16 @@ class MainActivity : AppCompatActivity() {
                             Intent(this@MainActivity, HomeActivity::class.java)
                         )
                         finish()
+                    }
+                    else{
+                        withContext(Dispatchers.Main) {
+                            startActivity(
+                                Intent(
+                                    this@MainActivity,
+                                    LoginActivity::class.java
+                                )
+                            )
+                        }
                     }
                 }
             } else {

@@ -97,8 +97,6 @@ class HomeFragment : Fragment() {
             Toast.makeText(requireContext(), "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
         }
    }
-
-
     private fun topratted(){
         try{
             CoroutineScope(Dispatchers.IO).launch {
@@ -136,17 +134,24 @@ class HomeFragment : Fragment() {
                 val response=repository.getAllBook()
                 if(response.success==true){
                         val lstBook_New_Published = response.data
-                    withContext(Main) {
-                        val New_Published = context?.let {
-                            new_Published_Adapter(
-                                lstBook_New_Published as ArrayList<Book>,
-                                it
-                            )
+                    if(lstBook_New_Published!==null) {
+                        withContext(Main) {
+                            val New_Published = context?.let {
+                                new_Published_Adapter(
+                                    lstBook_New_Published as ArrayList<Book>,
+                                    it
+                                )
+                            }
+                            val NewLayoutManager = LinearLayoutManager(requireContext())
+                            NewLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+                            new_publised.layoutManager = NewLayoutManager
+                            new_publised.adapter = New_Published;
                         }
-                        val NewLayoutManager = LinearLayoutManager(requireContext())
-                        NewLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-                        new_publised.layoutManager = NewLayoutManager
-                        new_publised.adapter = New_Published;
+                    }
+                    else{
+                        withContext(Main){
+                            Toast.makeText(context, "no data", Toast.LENGTH_SHORT).show()
+                        }
                     }
                }
                else{

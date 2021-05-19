@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var lg_password:EditText
     private lateinit var lg_showPassword:CheckBox
     private lateinit var login:Button
-    private lateinit var loginViewModel: LoginViewModel
+//    private lateinit var loginViewModel: LoginViewModel
     private lateinit var lg_signup:Button
     private val permissions = arrayOf(
         android.Manifest.permission.CAMERA,
@@ -39,16 +39,15 @@ class LoginActivity : AppCompatActivity() {
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding:ActivityLoginBinding= DataBindingUtil.setContentView(this,R.layout.activity_login)
-        binding.lifecycleOwner=this
+        setContentView(R.layout.activity_login)
         login_layout=findViewById(R.id.login_layout)
         lg_email=findViewById(R.id.lg_email)
         lg_password=findViewById(R.id.lg_password)
         lg_showPassword=findViewById(R.id.lg_showPassword)
         login=findViewById(R.id.login)
         lg_signup=findViewById(R.id.lg_signup)
-        loginViewModel= ViewModelProvider(this).get(LoginViewModel::class.java)
-        binding.loginViewModel=loginViewModel
+//        loginViewModel= ViewModelProvider(this).get(LoginViewModel::class.java)
+//        binding.loginViewModel=loginViewModel
         if (!hasPermission()) {
             requestPermission()
         }
@@ -69,7 +68,6 @@ class LoginActivity : AppCompatActivity() {
                 if(response.success==true){
                     ServiceBuilder.token="Bearer ${response.token}"
                     ServiceBuilder.id=response.id
-
                     if(response.role=="Admin"){
                         withContext(Main) {
                             startActivity(Intent(this@LoginActivity, AdminPanelActivity::class.java))

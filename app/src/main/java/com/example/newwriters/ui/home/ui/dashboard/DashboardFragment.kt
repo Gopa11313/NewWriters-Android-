@@ -15,6 +15,7 @@ import com.example.newwriters.R
 import com.example.newwriters.ui.adapter.dashboradIteamAdapter
 import com.example.newwriters.ui.login.LoginActivity
 import com.example.newwriters.ui.model.DashBoradIteam
+import com.example.newwriters.ui.setting.SettingActivity
 import com.example.newwriters.ui.upload_books.UploadBookActivity
 import com.example.newwriters.ui.user_profile.UserProfileActivity
 import kotlinx.coroutines.CoroutineScope
@@ -76,6 +77,9 @@ class DashboardFragment : Fragment() {
                 else if(selectedItemText==4){
                 logout()
             }
+                else if( selectedItemText==3){
+                    startActivity(Intent(context  ,SettingActivity::class.java))
+                }
             }
     }
     fun logout(){

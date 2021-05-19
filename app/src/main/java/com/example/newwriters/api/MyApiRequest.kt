@@ -7,7 +7,7 @@ import retrofit2.Response
 import java.io.IOException
 import java.lang.Exception
 
-abstract class MyApiRequest{
+abstract class MyApiRequest {
     suspend fun <T : Any> apiRequest(call: suspend () -> Response<T>): T {
         val response = call.invoke()
         try {
@@ -26,7 +26,7 @@ abstract class MyApiRequest{
                 message.append("Error code : ${response.code()}")
                 throw IOException(message.toString())
             }
-        }catch (e: Exception){
+        }catch (e:Exception){
             Toast.makeText(throw e , "$e", Toast.LENGTH_SHORT).show()
         }
     }

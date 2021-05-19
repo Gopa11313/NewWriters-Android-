@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewWriters"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.notification.NotificationActivity"></activity>
+        <activity android:name=".ui.setting.SettingActivity"></activity>
+        <activity android:name=".ui.notification.NotificationActivity" />
         <activity android:name=".ui.uploadUserImage.UploadImageActivity" />
         <activity android:name=".ui.user_profile.UserProfileActivity" />
         <activity
