@@ -1,9 +1,11 @@
 package com.example.newwriters.ui.home.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +17,7 @@ import com.example.newwriters.ui.adapter.best_seller_Adapter
 import com.example.newwriters.ui.adapter.new_Published_Adapter
 import com.example.newwriters.ui.adapter.top_ratted_Adapter
 import com.example.newwriters.ui.model.Book
+import com.example.newwriters.ui.notification.NotificationActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
@@ -26,6 +29,7 @@ class HomeFragment : Fragment() {
     private lateinit var bst_seller: RecyclerView
     private lateinit var top_rated: RecyclerView
     private lateinit var new_publised: RecyclerView
+    private lateinit var notification: ImageButton
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -46,6 +50,7 @@ class HomeFragment : Fragment() {
         bst_seller=view.findViewById(R.id.bst_seller_rcy)
         top_rated=view.findViewById(R.id.top_rated_rcy)
         new_publised=view.findViewById(R.id.new_publised_rcy)
+        notification=view.findViewById(R.id.notification)
 
 //    ----best selller boook apater---//
         book_Best_Seller()
@@ -56,16 +61,12 @@ class HomeFragment : Fragment() {
 //        Handler(Looper.getMainLooper()).postDelayed({
             New_Published()
 //        },1000)
-
-
-
-
-
-
-
-
-
+        notification.setOnClickListener(){
+        startActivity(Intent(context,NotificationActivity::class.java))
+        }
     }
+
+
     private fun book_Best_Seller(){
         try{
             CoroutineScope(Dispatchers.IO).launch {

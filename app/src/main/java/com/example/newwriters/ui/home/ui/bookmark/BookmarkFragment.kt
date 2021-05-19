@@ -1,11 +1,13 @@
 package com.example.newwriters.ui.home.ui.bookmark
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +16,7 @@ import com.example.newwriters.api.ServiceBuilder
 import com.example.newwriters.repository.BookmarkRepository
 import com.example.newwriters.ui.adapter.bookmark_Adapter
 import com.example.newwriters.ui.model.Bookmark
+import com.example.newwriters.ui.notification.NotificationActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
@@ -24,6 +27,7 @@ class BookmarkFragment : Fragment() {
 
     private lateinit var viewModel: BookmarkViewModel
     private lateinit var bookmark_book: RecyclerView
+    private lateinit var notification: ImageButton
     private val lst_of_Bookmarked_book=ArrayList<Bookmark>();
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -36,7 +40,11 @@ class BookmarkFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bookmark_book=view.findViewById(R.id.bookmark_book)
+        notification=view.findViewById(R.id.notification)
         getBookmarkedBook()
+        notification.setOnClickListener(){
+            startActivity(Intent(context, NotificationActivity::class.java))
+        }
 
     }
 private fun getBookmarkedBook(){

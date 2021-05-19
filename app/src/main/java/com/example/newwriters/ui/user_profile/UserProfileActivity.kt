@@ -3,9 +3,11 @@ package com.example.newwriters.ui.user_profile
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.example.newwriters.R
 import com.example.newwriters.api.ServiceBuilder
@@ -20,6 +22,7 @@ import kotlinx.coroutines.withContext
 
 class UserProfileActivity : AppCompatActivity() {
     private lateinit var user_image:CircleImageView
+    lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var user_name:TextView
     var imageurl:String?=null
     var name:String?=null
@@ -28,12 +31,35 @@ class UserProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_profile)
         user_image=findViewById(R.id.user_image)
         user_name=findViewById(R.id.user_name)
+        swipeRefreshLayout=findViewById(R.id.swipe)
         getuser()
 
         user_image.setOnClickListener(){
             startActivity(Intent(this,UploadImageActivity::class.java))
         }
+        swipeRefreshLayout.setOnRefreshListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                val repository=UserRepository()
+                val response=repository.userByid(ServiceBuilder.id!!)
+                if(response.success==true){
+                    val data=response.data
+                    val listdata= data?.get(0)
+                    imageurl=listdata!!.image
+                    withContext(Main){
 
+                        val imagePath = ServiceBuilder.loadImagePath() +imageurl
+                        if (!imageurl.equals("noimg")) {
+                            Glide.with(this@UserProfileActivity)
+                                .load(imagePath)
+                                .into(user_image)
+                        }
+                    }
+                }
+            }
+            Handler().postDelayed(Runnable {
+                swipeRefreshLayout.isRefreshing = false
+            }, 2000)
+        }
 
 
     }

@@ -8,19 +8,34 @@
 
     tools:context=".ui.home.ui.bookmark.BookmarkFragment">
 
-    <EditText
-        android:id="@+id/text_home"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#D3D3D3"
-        android:layout_marginStart="10dp"
-        android:hint=" Search Books"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:textSize="16sp"
-        android:padding="3dp"
-        android:drawableLeft="@drawable/ic_baseline_search_24"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/text_home"
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:layout_height="30dp"
+            android:background="#D3D3D3"
+            android:layout_marginStart="10dp"
+            android:hint=" Search Books"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:padding="3dp"
+            android:drawableLeft="@drawable/ic_baseline_search_24"
+            />
+        <ImageButton
+            android:id="@+id/notification"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="43dp"
+            android:layout_marginTop="1dp"
+            android:src="@drawable/ic_notifications_black_24dp"
+            />
+    </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="8dp"
