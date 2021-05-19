@@ -16,11 +16,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.newwriters.R
 import com.example.newwriters.repository.BookRepository
+import com.example.newwriters.repository.NotificationRepository
 import com.example.newwriters.ui.model.Book
+import com.example.newwriters.ui.model.Notification
+import com.example.newwriters.ui.utils.notif
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
@@ -59,6 +64,7 @@ class UploadBookFragment : Fragment() {
     lateinit var selectedFile: Uri
     lateinit var displayName:String;
     private val REQUEST_GALLERY_CODE=0;
+    private var bookid:String?=null;
     private val REQUEST_CAMERA_CODE=1;
     private var imageUrl:String?=null;
     override fun onCreateView(
@@ -242,8 +248,10 @@ class UploadBookFragment : Fragment() {
            val repository=BookRepository()
            val response=repository.uploadBook(book)
            if(response.success==true){
-               uploadImage(response.id!!)
-               uploadBookfile(response.id!!)
+               bookid=response.id!!
+               uploadImage(bookid!!)
+               uploadBookfile(bookid!!)
+               addNotification(id=bookid!!,author_name =  AuthorName.text.toString(),Book_name =bookName.text.toString() )
                withContext(Main){
                    Toast.makeText(requireContext(), "${response.msg}", Toast.LENGTH_SHORT).show()
                }
@@ -273,18 +281,18 @@ class UploadBookFragment : Fragment() {
                     val studentRepository = BookRepository()
                     val response = studentRepository.uploadCoverPage(BookID, body)
                     if (response.success == true) {
-                        withContext(Dispatchers.Main) {
+                        withContext(Main) {
                             Toast.makeText(requireContext() ,"Uploaded", Toast.LENGTH_SHORT)
                                 .show()
                         }
                     } else {
-                        withContext(Dispatchers.Main) {
-                            Toast.makeText(requireContext(), "${response.msg}", Toast.LENGTH_SHORT).show()
+                        withContext(Main) {
+                            Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
                 catch (ex: Exception) {
-                    withContext(Dispatchers.Main) {
+                    withContext(Main) {
                         Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()
                         Log.d("Error uploading image ", ex.toString())
                         Toast.makeText(requireContext(), ex.localizedMessage, Toast.LENGTH_SHORT).show()
@@ -330,5 +338,37 @@ class UploadBookFragment : Fragment() {
             }
         }
     }
+    private fun addNotification(id:String,author_name:String,Book_name:String){
+        val notification=Notification(bookId = id)
+        try{
+            CoroutineScope(Dispatchers.IO).launch {
+                val repository=NotificationRepository()
+                val response=repository.addNotification(notification)
+                if(response.success==true){
+                    showHighPriorityNotification(author_name,Book_name)
+                }
+                else{
+                    withContext(Main){
+                        Toast.makeText(requireContext(), "error here", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }catch (e:Exception){
+            Toast.makeText(context, "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+        }
+    }
+    //------------notification----------------//
+    private fun showHighPriorityNotification(author:String,bookname:String){
+        val notificationManager= NotificationManagerCompat.from(requireContext())
+        val notificationChannels= notif(requireContext())
+        notificationChannels.createNotificationChannels()
 
+        val notification= NotificationCompat.Builder(requireContext(),notificationChannels.CHANNEL_1)
+            .setSmallIcon(R.drawable.ic_baseline_sms_24)
+            .setContentTitle(author)
+            .setContentText("Upload $bookname book.")
+            .setColor(Color.BLUE)
+            .build()
+        notificationManager.notify(1,notification)
+    }
 }
