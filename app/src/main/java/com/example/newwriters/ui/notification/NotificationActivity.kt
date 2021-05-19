@@ -28,11 +28,18 @@ class NotificationActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 val repository=NotificationRepository()
                 val response=repository.getAllNotif()
-                if(response.success==true){
-                    val data=response.data
-                    val adapter=NotificationAdapter(data as ArrayList<Notification>,this@NotificationActivity)
-                    notif_rcy.layoutManager = LinearLayoutManager(this@NotificationActivity)
-                    notif_rcy.adapter = adapter
+                if(response.success==true) {
+                    val data = response.data
+                    if (data !== null) {
+                        withContext(Main) {
+                            val adapter = NotificationAdapter(
+                                data as ArrayList<Notification>,
+                                this@NotificationActivity
+                            )
+                            notif_rcy.layoutManager = LinearLayoutManager(this@NotificationActivity)
+                            notif_rcy.adapter = adapter
+                        }
+                    }
                 }
                 else{
                     withContext(Main){

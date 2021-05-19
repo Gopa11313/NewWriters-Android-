@@ -16,6 +16,7 @@ import com.example.newwriters.repository.UserRepository
 import com.example.newwriters.ui.admin.home.AdminPanelActivity
 import com.example.newwriters.ui.model.User
 import com.example.newwriters.ui.signup.SignupActivity
+import com.example.newwriters.ui.utils.saveSharedPref
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -68,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                 if(response.success==true){
                     ServiceBuilder.token="Bearer ${response.token}"
                     ServiceBuilder.id=response.id
+
                     if(response.role=="Admin"){
                         withContext(Main) {
                             startActivity(Intent(this@LoginActivity, AdminPanelActivity::class.java))
@@ -75,6 +77,14 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                     else{
+                        val sharedPref =getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
+                        val editor=sharedPref.edit()
+                        editor.remove("email")
+                        editor.remove("password")
+                        editor.remove("_id")
+                        editor.remove("name")
+                            .apply()
+                        saveSharedPref( email = lg_email.text.toString(), password =  lg_password.text.toString())
                     withContext(Main) {
                         startActivity(Intent(this@LoginActivity, SliderActivity::class.java))
                         finish()

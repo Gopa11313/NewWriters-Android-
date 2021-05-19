@@ -109,6 +109,9 @@ class ParticularBookActivity : AppCompatActivity() {
                         user_review.layoutManager = LinearLayoutManager(this@ParticularBookActivity)
                         user_review.adapter = adapter
                     }
+                    else{
+                        Toast.makeText(this@ParticularBookActivity, "no review", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 else(
                         withContext(Main){

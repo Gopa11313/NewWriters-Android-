@@ -3,10 +3,7 @@ package com.example.newwriters.api
 import com.example.newwriters.response.NoticationResponse
 import com.example.newwriters.ui.model.Notification
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface NoticationApi {
     @POST("notification/add")
@@ -18,5 +15,11 @@ interface NoticationApi {
     @GET("get/all/notification")
     suspend fun getallNotification(
         @Header("Authorization") token:String
+    ):Response<NoticationResponse>
+
+    @PUT("checked/notification/{id}")
+    suspend fun updateChecked(
+        @Header("Authorization") token:String,
+        @Path ("id") id:String
     ):Response<NoticationResponse>
 }

@@ -7,13 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ListView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.newwriters.R
 import com.example.newwriters.ui.adapter.dashboradIteamAdapter
+import com.example.newwriters.ui.login.LoginActivity
 import com.example.newwriters.ui.model.DashBoradIteam
 import com.example.newwriters.ui.upload_books.UploadBookActivity
 import com.example.newwriters.ui.user_profile.UserProfileActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class DashboardFragment : Fragment() {
@@ -45,14 +52,14 @@ class DashboardFragment : Fragment() {
         DashBoradIteamAdpater.add(DashBoradIteam("Profile",
             R.drawable.ic_baseline_person_outline_24))
 
-//        DashBoradIteamAdpater.add(DashBoradIteam("Upload Books",
-//            R.drawable.ic_baseline_person_outline_24))
-
         DashBoradIteamAdpater.add(DashBoradIteam("Info",
             R.drawable.ic_baseline_info_24))
 
         DashBoradIteamAdpater.add(DashBoradIteam("Help",
             R.drawable.ic_baseline_help_24))
+
+        DashBoradIteamAdpater.add(DashBoradIteam("Setting",
+            R.drawable.ic_baseline_settings_24))
 
         DashBoradIteamAdpater.add(DashBoradIteam("Logout",
             R.drawable.ic_baseline_logout_24))
@@ -66,6 +73,30 @@ class DashboardFragment : Fragment() {
                 if(selectedItemText==0){
                     startActivity(Intent(context  ,UserProfileActivity::class.java))
                 }
+                else if(selectedItemText==4){
+                logout()
             }
+            }
+    }
+    fun logout(){
+        val builder= AlertDialog.Builder(requireContext());
+        builder.setMessage("Do you want to logout")
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.setPositiveButton("Yes"){dialogInterface,which->
+            val sharedPref =requireActivity().getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
+            val editor=sharedPref.edit()
+            editor.remove("email")
+            editor.remove("password")
+                .apply()
+            CoroutineScope(Dispatchers.IO).launch{
+                withContext(Dispatchers.Main){
+                    startActivity(Intent(context, LoginActivity::class.java))
+                }
+            }
+        }
+        builder.setNegativeButton("No"){
+                dialogInterface,which->
+        }
+        builder.show()
     }
 }

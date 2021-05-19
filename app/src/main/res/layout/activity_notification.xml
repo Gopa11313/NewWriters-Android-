@@ -5,10 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
+    android:orientation="vertical"
     tools:context=".ui.notification.NotificationActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Notifications"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notif_rcy"
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         />
 

@@ -19,4 +19,9 @@ class NotificationRepository:MyApiRequest() {
             myapi.getallNotification(ServiceBuilder.token!!)
         }
     }
+    suspend fun checked(id:String):NoticationResponse{
+        return apiRequest {
+            myapi.updateChecked(ServiceBuilder.token!!,id!!)
+        }
+    }
 }
