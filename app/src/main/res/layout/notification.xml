@@ -32,13 +32,11 @@
                 android:text="Book Name"
                 android:paddingLeft="5dp"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/black"
                 android:textStyle="bold"
                 />
         <TextView
             android:id="@+id/notifdes"
             android:layout_width="170dp"
-            android:textColor="@color/black"
             android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout

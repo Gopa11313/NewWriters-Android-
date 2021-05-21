@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="25dp"
-        android:textColor="@color/black"
+        android:textStyle="bold"
         android:text="Rate this Book"
         />
     <FrameLayout
@@ -37,7 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="0.0"
-        android:textColor="@color/black"
         android:textSize="15dp"
         />
     <EditText
@@ -49,7 +48,6 @@
         android:minLines="6"
         android:gravity="top|left"
         android:maxLines="10"
-        android:textColor="@color/black"
         android:textSize="15dp"
         android:paddingLeft="8dp"
         android:background="@drawable/cornerborder"

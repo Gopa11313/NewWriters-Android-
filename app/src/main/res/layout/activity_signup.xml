@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NewWriters"
-        android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_marginTop="20dp"
         android:textSize="40dp"
         />
@@ -46,7 +46,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Create account"
-                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 />
@@ -85,7 +84,6 @@
             android:layout_marginTop="10dp"
             android:textSize="15dp"
             android:layout_marginLeft="13dp"
-            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:text="Passswords must be at least 6 characters."/>
 
@@ -112,7 +110,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:textColor="@color/black"
             android:text="@string/Terms"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,7 +129,6 @@
                 android:layout_weight="2"
                 android:gravity="center"
                 android:text="Already have an account?"
-                android:textColor="@color/black"
                 android:textSize="13dp" />
 
             <FrameLayout

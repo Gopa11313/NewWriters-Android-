@@ -30,7 +30,6 @@
             <TextView
                 android:id="@+id/bkNm"
                 android:text="Book Name"
-                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -84,7 +83,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Description"
-        android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="20dp"
         />
@@ -93,7 +91,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:textColor="@color/black"
         />
     <TextView
         android:layout_marginTop="10dp"

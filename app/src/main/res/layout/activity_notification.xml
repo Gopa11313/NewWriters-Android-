@@ -12,7 +12,6 @@
         android:text="Notifications"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notif_rcy"

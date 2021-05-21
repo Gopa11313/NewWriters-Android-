@@ -17,8 +17,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-
+        nightmode()
         val navView: BottomNavigationView = findViewById(R.id.nav_view_drawer)
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
@@ -28,7 +27,6 @@ class HomeActivity : AppCompatActivity() {
             R.id.navigation_bookmark))
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        nightmode()
     }
     @SuppressLint("ResourceType")
     fun nightmode(){

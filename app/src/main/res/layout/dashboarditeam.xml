@@ -19,12 +19,14 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:background="@color/trans"
             >
             <ImageView
                 android:id="@+id/dsh_icon"
                 android:layout_width="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_height="40dp"
+                android:background="@color/trans"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/ic_baseline_person_outline_24"
                 />
@@ -33,7 +35,6 @@
         <TextView
             android:id="@+id/dsh_title"
             android:layout_width="0dp"
-            android:textColor="@color/black"
             android:text="Dashboard"
             android:textSize="20sp"
             android:paddingTop="20dp"

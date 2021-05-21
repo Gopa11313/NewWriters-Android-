@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Settings"
-        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_marginTop="5dp"
@@ -28,7 +27,6 @@
             android:text="Night Mode"
             android:gravity="center"
             android:textSize="18sp"
-            android:textColor="@color/black"
             android:layout_height="wrap_content"/>
         <Switch
             android:id="@+id/switch1"

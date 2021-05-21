@@ -1,16 +1,20 @@
 package com.example.newwriters.ui.setting
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.CompoundButton
 import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.newwriters.R
 import com.example.newwriters.api.ServiceBuilder
 import com.example.newwriters.repository.UserRepository
 import com.example.newwriters.ui.adapter.top_ratted_Adapter
+import com.example.newwriters.ui.home.HomeActivity
+import com.example.newwriters.ui.login.LoginActivity
 import com.example.newwriters.ui.model.User
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Main
@@ -49,12 +53,24 @@ class SettingActivity : AppCompatActivity() {
                 val response=repository.nightMode(ServiceBuilder.id!!,user)
                 if(response.success==true){
                     withContext(Main){
-                        if(flag==true){
-                            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
+                        val builder= AlertDialog.Builder(this@SettingActivity);
+                        builder.setMessage("The Application will start from home page. Are you sure!!")
+                        builder.setIcon(android.R.drawable.ic_dialog_alert);
+                        builder.setPositiveButton("Yes"){dialogInterface,which->
+                            if(flag==true){
+                                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
+                            }
+                            else{
+                                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
+                            }
+                            startActivity(Intent(this@SettingActivity,HomeActivity::class.java))
+                            finish()
                         }
-                        else{
-                            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
+                        builder.setNegativeButton("No"){
+                                dialogInterface,which->
                         }
+                        builder.show()
+
                     }
                 }
                 else{
