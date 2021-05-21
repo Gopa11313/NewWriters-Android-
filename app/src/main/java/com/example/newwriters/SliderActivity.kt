@@ -4,16 +4,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import androidx.viewpager2.widget.ViewPager2
+import com.example.newwriters.api.ServiceBuilder
+import com.example.newwriters.repository.UserRepository
 import com.example.newwriters.ui.adapter.IntroSliderAdapter
 import com.example.newwriters.ui.home.HomeActivity
 import com.example.newwriters.ui.model.IntroSlide
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SliderActivity : AppCompatActivity() {
     private lateinit var introSliderViewPager: ViewPager2
@@ -56,16 +60,12 @@ class SliderActivity : AppCompatActivity() {
                 introSliderViewPager.currentItem+=1
             }
             else{
-                Intent(applicationContext, HomeActivity::class.java).also {
-                    startActivity(it)
-                }
+                checkSlider()
             }
         }
 
         textSkipIntro.setOnClickListener {
-            Intent(applicationContext, HomeActivity::class.java).also {
-                startActivity(it)
-            }
+            checkSlider()
         }
 
     }
@@ -105,6 +105,29 @@ class SliderActivity : AppCompatActivity() {
                 )
 
             }
+        }
+    }
+
+    private fun checkSlider(){
+        try{
+            CoroutineScope(Dispatchers.IO).launch {
+                val repository = UserRepository()
+                val response = repository.sliderCheck(ServiceBuilder.id!!)
+                if (response.success == true) {
+                    withContext(Main){
+                        Intent(applicationContext, HomeActivity::class.java).also {
+                            startActivity(it)
+                        }
+                    }
+                }
+                else{
+                    withContext(Main){
+                        Toast.makeText(this@SliderActivity, "error", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }catch (e:Exception){
+            Toast.makeText(this, "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
         }
     }
 }

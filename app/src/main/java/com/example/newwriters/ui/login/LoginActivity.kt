@@ -14,6 +14,7 @@ import com.example.newwriters.api.ServiceBuilder
 import com.example.newwriters.databinding.ActivityLoginBinding
 import com.example.newwriters.repository.UserRepository
 import com.example.newwriters.ui.admin.home.AdminPanelActivity
+import com.example.newwriters.ui.home.HomeActivity
 import com.example.newwriters.ui.model.User
 import com.example.newwriters.ui.signup.SignupActivity
 import com.example.newwriters.ui.utils.saveSharedPref
@@ -68,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                 if(response.success==true){
                     ServiceBuilder.token="Bearer ${response.token}"
                     ServiceBuilder.id=response.id
+                    ServiceBuilder.night_Mode=response.night_Mode
                     if(response.role=="Admin"){
                         withContext(Main) {
                             startActivity(Intent(this@LoginActivity, AdminPanelActivity::class.java))
@@ -84,8 +86,14 @@ class LoginActivity : AppCompatActivity() {
                             .apply()
                         saveSharedPref( email = lg_email.text.toString(), password =  lg_password.text.toString())
                     withContext(Main) {
-                        startActivity(Intent(this@LoginActivity, SliderActivity::class.java))
-                        finish()
+                        if(response.slider==false) {
+                            startActivity(Intent(this@LoginActivity, SliderActivity::class.java))
+                            finish()
+                        }
+                        else{
+                            startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+                            finish()
+                        }
                     }
                 }
                 }
@@ -119,5 +127,9 @@ class LoginActivity : AppCompatActivity() {
             }
         }
         return hasPermission
+    }
+
+    private fun checkslider(){
+
     }
 }

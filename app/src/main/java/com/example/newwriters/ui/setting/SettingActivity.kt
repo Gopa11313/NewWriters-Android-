@@ -18,9 +18,9 @@ class SettingActivity : AppCompatActivity() {
         switch1=findViewById(R.id.switch1)
         switch1.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
-            } else {
                 delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
+            } else {
+                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
             }
         })
     }

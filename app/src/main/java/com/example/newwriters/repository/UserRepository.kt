@@ -32,4 +32,9 @@ class UserRepository:MyApiRequest() {
             myapi.uploadUserImage(id,ServiceBuilder.token!!,file)
         }
     }
+    suspend fun sliderCheck(id:String):UserResponse{
+        return  apiRequest {
+            myapi.sliderCheck(id,ServiceBuilder.token!!)
+        }
+    }
 }

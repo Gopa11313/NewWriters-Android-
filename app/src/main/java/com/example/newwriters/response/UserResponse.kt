@@ -9,6 +9,8 @@ data class UserResponse(
     val data:List<User>?=null,
     val id:String?=null,
     val role:String?=null,
+    val slider:Boolean?=null,
+    val night_Mode:Boolean?=null,
 
 ) {
 }

@@ -26,4 +26,10 @@ interface UserApi {
         @Header("Authorization") token:String,
         @Part cover_page: MultipartBody.Part
     ):Response<UserResponse>
+
+    @PUT("checked/slider/{id}")
+    suspend fun sliderCheck(
+        @Path ("id") id:String,
+        @Header("Authorization") token:String,
+    ):Response<UserResponse>
 }
