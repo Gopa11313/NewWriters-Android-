@@ -31,12 +31,10 @@ class HomeActivity : AppCompatActivity() {
     @SuppressLint("ResourceType")
     fun nightmode(){
         if(ServiceBuilder.night_Mode==true){
-            AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_YES);
+            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
         }
         else{
-            AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_NO);
+            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
         }
     }
 }
