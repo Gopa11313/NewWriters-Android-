@@ -28,7 +28,7 @@ class best_seller_Adapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BestSellerViewholder {
         val view= LayoutInflater.from(parent.context)
         .inflate(R.layout.bestsellers_layout,parent,false)
-        return BestSellerViewholder(view);
+        return BestSellerViewholder(view)
     }
 
     override fun onBindViewHolder(holder: BestSellerViewholder, position: Int) {
@@ -41,9 +41,9 @@ class best_seller_Adapter(
                 .into(holder.best_seller_book)
         }
         holder.best_seller_book.setOnClickListener(){
-            val intent= Intent(context,ParticularBookActivity::class.java)
+            val intent= Intent(context, ParticularBookActivity::class.java)
             intent.putExtra("_id",bestseller._id)
-            context.startActivity(intent);
+            context.startActivity(intent)
         }
     }
 

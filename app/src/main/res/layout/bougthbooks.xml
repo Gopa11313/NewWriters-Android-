@@ -2,18 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/bougthBooks"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:id="@+id/bougthBooks"
-        android:padding="5dp"
-        android:layout_height="wrap_content">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/bought_books__cover_page"
             android:src="@drawable/ic_baseline_person_outline_24"
             android:layout_width="95dp"
-            android:scaleType="fitXY"
             android:layout_marginLeft="10dp"
             android:layout_height="125dp"/>
         <LinearLayout
@@ -37,7 +31,7 @@
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"/>
             <RatingBar
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:id="@+id/bought_books_ratting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,5 +43,3 @@
                 android:isIndicator="true"/>
         </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>

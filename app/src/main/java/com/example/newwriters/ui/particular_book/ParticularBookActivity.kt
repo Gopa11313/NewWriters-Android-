@@ -12,12 +12,10 @@ import com.example.newwriters.R
 import com.example.newwriters.api.ServiceBuilder
 import com.example.newwriters.repository.BookRepository
 import com.example.newwriters.repository.BookmarkRepository
+import com.example.newwriters.repository.BougthBookRepository
 import com.example.newwriters.repository.ReviewRepository
 import com.example.newwriters.ui.adapter.review_adapter
-import com.example.newwriters.ui.model.Best_Seller
-import com.example.newwriters.ui.model.Book
-import com.example.newwriters.ui.model.Bookmark
-import com.example.newwriters.ui.model.Review
+import com.example.newwriters.ui.model.*
 import com.example.newwriters.ui.utils.CustomDialog
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
@@ -34,6 +32,7 @@ class ParticularBookActivity : AppCompatActivity() {
     private lateinit var writeReview:TextView
     private lateinit var description:TextView
     private lateinit var BookRatting:RatingBar
+    private lateinit var buy:Button
     private var Id:String?=null
 //    private var book_Id:String?=null
     private val lst_of_review=ArrayList<Review>();
@@ -50,22 +49,27 @@ class ParticularBookActivity : AppCompatActivity() {
         description=findViewById(R.id.description)
         BookRatting=findViewById(R.id.BookRatting)
         writeReview=findViewById(R.id.writeReview)
+        buy=findViewById(R.id.buy)
 
         val adapter=review_adapter(lst_of_review,this)
         val mlayout=LinearLayoutManager(this)
         user_review.layoutManager= LinearLayoutManager(this)
         user_review.adapter=adapter
-        getallReview()
         Id = intent.getStringExtra("_id")
         if (intent != null) {
             getBook()
         }
+        getallReview()
+
         writeReview.setOnClickListener (){
             ServiceBuilder.BookID=Id
             CustomDialog().show(supportFragmentManager, "MyCustomFragment")
         }
         add_to_bookMark.setOnClickListener(){
             AddToBookMArk()
+        }
+        buy.setOnClickListener(){
+            buyBook()
         }
     }
 
@@ -163,6 +167,27 @@ class ParticularBookActivity : AppCompatActivity() {
                 dialogInterface,which->
         }
         builder.show()
+    }
+    private fun buyBook(){
+        val bougthbook=BougthBooks(userId = ServiceBuilder.id!!,bookId = Id)
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                val repository=BougthBookRepository()
+                val response=repository.buyABook(bougthbook)
+                if(response.success==true){
+                    withContext(Main){
+                        Toast.makeText(this@ParticularBookActivity, "${response.msg}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                else   {
+                    withContext(Main){
+                        Toast.makeText(this@ParticularBookActivity, "${response.msg}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }catch (e:Exception){
+            Toast.makeText(this, "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
