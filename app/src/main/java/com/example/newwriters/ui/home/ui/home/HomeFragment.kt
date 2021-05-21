@@ -1,17 +1,22 @@
 package com.example.newwriters.ui.home.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newwriters.R
+import com.example.newwriters.api.ServiceBuilder
 import com.example.newwriters.repository.BookRepository
 import com.example.newwriters.ui.adapter.best_seller_Adapter
 import com.example.newwriters.ui.adapter.new_Published_Adapter
@@ -52,6 +57,7 @@ class HomeFragment : Fragment() {
         new_publised=view.findViewById(R.id.new_publised_rcy)
         notification=view.findViewById(R.id.notification)
 
+
 //    ----best selller boook apater---//
         book_Best_Seller()
 //
@@ -64,6 +70,7 @@ class HomeFragment : Fragment() {
         notification.setOnClickListener(){
         startActivity(Intent(context,NotificationActivity::class.java))
         }
+//        nightmode()
     }
 
 
@@ -81,7 +88,7 @@ class HomeFragment : Fragment() {
                                 it
                             )
                         }
-                        val NewLayoutManager = LinearLayoutManager(requireContext())
+                        val NewLayoutManager = LinearLayoutManager(context)
                         NewLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
                         bst_seller.layoutManager = NewLayoutManager
                         bst_seller.adapter = top_ratted;
@@ -111,7 +118,7 @@ class HomeFragment : Fragment() {
                                 it
                             )
                         }
-                        val NewLayoutManager = LinearLayoutManager(requireContext())
+                        val NewLayoutManager = LinearLayoutManager(context)
                         NewLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
                         top_rated.layoutManager = NewLayoutManager
                         top_rated.adapter = top_ratted;
@@ -142,7 +149,7 @@ class HomeFragment : Fragment() {
                                     it
                                 )
                             }
-                            val NewLayoutManager = LinearLayoutManager(requireContext())
+                            val NewLayoutManager = LinearLayoutManager(context)
                             NewLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
                             new_publised.layoutManager = NewLayoutManager
                             new_publised.adapter = New_Published;
@@ -164,4 +171,15 @@ class HomeFragment : Fragment() {
            Toast.makeText(requireContext(), "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
        }
      }
+    @SuppressLint("ResourceType")
+    fun nightmode(){
+        if(ServiceBuilder.night_Mode==true){
+            AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
 }

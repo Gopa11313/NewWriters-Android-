@@ -12,4 +12,6 @@
     <color name="lime">#008000</color>
     <color name="orange">#ff4f00</color>
     <color name="myPrimaryColor">#008000</color>
+    <color name="trans">#00000000 </color>.
+
 </resources>

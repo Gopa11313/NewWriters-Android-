@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                     if (response.success == true) {
                         ServiceBuilder.token = "Bearer ${response.token}"
                         ServiceBuilder.id = response.id
+                        ServiceBuilder.night_Mode=response.night_Mode
                         delay(500)
                         startActivity(
                             Intent(this@MainActivity, HomeActivity::class.java)

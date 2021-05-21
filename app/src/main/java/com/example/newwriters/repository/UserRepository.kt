@@ -37,4 +37,9 @@ class UserRepository:MyApiRequest() {
             myapi.sliderCheck(id,ServiceBuilder.token!!)
         }
     }
+    suspend fun nightMode(id:String,user:User):UserResponse{
+        return apiRequest {
+            myapi.nightMode(id,user,ServiceBuilder.token!!)
+        }
+    }
 }

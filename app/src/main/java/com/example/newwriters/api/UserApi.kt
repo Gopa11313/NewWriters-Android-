@@ -32,4 +32,10 @@ interface UserApi {
         @Path ("id") id:String,
         @Header("Authorization") token:String,
     ):Response<UserResponse>
+    @PUT("checked/nightmode/{id}")
+    suspend fun nightMode(
+        @Path ("id") id:String,
+        @Body user: User,
+        @Header("Authorization") token:String,
+    ):Response<UserResponse>
 }
