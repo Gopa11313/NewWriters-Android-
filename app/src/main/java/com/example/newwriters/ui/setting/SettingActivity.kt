@@ -37,12 +37,10 @@ class SettingActivity : AppCompatActivity() {
                 flag=true
                 ServiceBuilder.night_Mode==true
                 nightmode(user)
-//                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
             } else {
                 val user=User(night_Mode = false)
                 nightmode(user)
                 ServiceBuilder.night_Mode=false
-//                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
             }
         })
     }
