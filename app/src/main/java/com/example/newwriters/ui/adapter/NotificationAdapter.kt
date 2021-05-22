@@ -78,7 +78,7 @@ class NotificationAdapter (
         holder.openBookFromNotification.setOnClickListener() {
             if (checked!!.equals(true)) {
                     val intent = Intent(context, ParticularBookActivity::class.java)
-                    intent.putExtra("_id", bookid)
+                    intent.putExtra("_id", bookid!!)
                     context.startActivity(intent)
             } else {
                 CoroutineScope(Dispatchers.IO).launch {

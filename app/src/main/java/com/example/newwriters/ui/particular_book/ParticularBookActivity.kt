@@ -3,17 +3,16 @@ package com.example.newwriters.ui.particular_book
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.example.newwriters.R
 import com.example.newwriters.api.ServiceBuilder
-import com.example.newwriters.repository.BookRepository
-import com.example.newwriters.repository.BookmarkRepository
-import com.example.newwriters.repository.BougthBookRepository
-import com.example.newwriters.repository.ReviewRepository
+import com.example.newwriters.repository.*
 import com.example.newwriters.ui.adapter.review_adapter
 import com.example.newwriters.ui.model.*
 import com.example.newwriters.ui.utils.CustomDialog
@@ -22,6 +21,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Main
 
 class ParticularBookActivity : AppCompatActivity() {
+    private lateinit var reviewSwipe:SwipeRefreshLayout
     private lateinit var particularbook:LinearLayout
     private lateinit var user_review:RecyclerView
     private lateinit var particular_Book_img:ImageView
@@ -39,6 +39,7 @@ class ParticularBookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_particular_book)
+        reviewSwipe=findViewById(R.id.reviewSwipe)
         particularbook=findViewById(R.id.particularbook)
         user_review=findViewById(R.id.user_review)
         particular_Book_img=findViewById(R.id.particular_Book_img)
@@ -70,6 +71,13 @@ class ParticularBookActivity : AppCompatActivity() {
         }
         buy.setOnClickListener(){
             buyBook()
+        }
+
+        reviewSwipe.setOnRefreshListener() {
+            getallReview()
+            Handler().postDelayed(Runnable {
+                reviewSwipe.isRefreshing = false
+            }, 2000)
         }
     }
 
@@ -108,13 +116,25 @@ class ParticularBookActivity : AppCompatActivity() {
                 if(response.success==true){
                     val data=response.data
                     if(data!=null) {
-                        val adapter =
-                            review_adapter(data as ArrayList<Review>, this@ParticularBookActivity)
-                        user_review.layoutManager = LinearLayoutManager(this@ParticularBookActivity)
-                        user_review.adapter = adapter
+                        withContext(Main) {
+                            val adapter =
+                                review_adapter(
+                                    data as ArrayList<Review>,
+                                    this@ParticularBookActivity
+                                )
+                            user_review.layoutManager =
+                                LinearLayoutManager(this@ParticularBookActivity)
+                            user_review.adapter = adapter
+                        }
                     }
-                    else{
-                        Toast.makeText(this@ParticularBookActivity, "no review", Toast.LENGTH_SHORT).show()
+                    else {
+                        withContext(Main) {
+                            Toast.makeText(
+                                this@ParticularBookActivity,
+                                "no review",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
                 else(

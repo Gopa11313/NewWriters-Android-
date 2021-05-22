@@ -1,7 +1,9 @@
 package com.example.newwriters.ui.admin.home
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -15,6 +17,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.newwriters.R
+import com.example.newwriters.ui.login.LoginActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AdminPanelActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -38,6 +45,24 @@ class AdminPanelActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        toolbar.setOnMenuItemClickListener() {
+            when (it.itemId) {
+                R.id.admin_logout -> {
+                    val builder= AlertDialog.Builder(this);
+                    builder.setMessage("Do you want to logout")
+                    builder.setIcon(android.R.drawable.ic_dialog_alert);
+                    builder.setPositiveButton("Yes"){dialogInterface,which->
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finish()
+                    }
+                    builder.setNegativeButton("No"){
+                            dialogInterface,which->
+                    }
+                    builder.show()
+                }
+            }
+            true;
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

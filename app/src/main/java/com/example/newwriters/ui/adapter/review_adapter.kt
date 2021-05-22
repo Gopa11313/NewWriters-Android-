@@ -57,6 +57,7 @@ class review_adapter(
                 if(response.success==true){
                     withContext(Main){
                         holder.user_name.setText(response.data?.get(0)?.name)
+                        holder.review_ratting.rating=review.ratting!!.toFloat()
                     }
                 }
             else{

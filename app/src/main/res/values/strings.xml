@@ -14,7 +14,7 @@
     <string name="nav_header_title">Gopal Thapa</string>
     <string name="nav_header_subtitle">gopalaa9819525993@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="admin_logout">Logout</string>
 
     <string name="menu_book">Books</string>
     <string name="menu_upload_books">Upload Book</string>

@@ -12,6 +12,7 @@
     <ImageView
         android:id="@+id/boook_cover_page"
         android:layout_width="100dp"
+        android:scaleType="fitXY"
         android:layout_height="130dp"
         android:src="@drawable/ic_menu_gallery"
         />

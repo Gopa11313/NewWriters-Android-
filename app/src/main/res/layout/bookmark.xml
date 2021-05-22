@@ -15,6 +15,7 @@
             android:id="@+id/cover_page"
             android:src="@drawable/ic_baseline_person_outline_24"
             android:layout_width="130dp"
+            android:scaleType="fitXY"
             android:layout_height="163dp"/>
         <LinearLayout
             android:layout_width="match_parent"
